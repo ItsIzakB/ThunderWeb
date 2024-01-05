@@ -68,36 +68,105 @@ h1{
     flex-wrap: wrap;
     justify-content:space-evenly;
     cursor: pointer;
+    transition: text-shadow 0.5s ease; /* Add transition */
 }
+.navSeat, .navAbout, .navContact:hover{
+    transition: text-shadow 0.5s ease; /* Add transition */
+}
+.navSeat:hover,.navAbout:hover, .navContact:hover{
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),   /* Glowing effect */
+                 0 0 20px rgba(255, 255, 255, 0.8);          
+}
+
 .popUps{
     display:flex;
+    height: 0px;
+    padding: 50px;
     font-family: 'Regular';
     justify-content: center;
     border-radius: 7px;
-    margin: 2px;
-    padding: 50px;
+    margin: 0px;
+    transition: height 1s ease;
 }
-.popSeat{
-    display: none;
+
+.popUps.active{
+    height: 400px;
+}
+.popSeat,.popContact, .popAbout{
+    display:block;
+    position:absolute;
+    overflow: hidden;
+    width:0;
+    height: 0;
     padding: 20px;
     border-radius: 8px;
     border: 3px solid rgb(255, 255, 255);
     transform: translate (-50%, -50%);
     background-color: rgb(203, 200, 200);
+    opacity:0;
 }
-.popContact{
-    display: none;
-    top: 50%;
-    left: 50%;
-    transform: translate (-50%, -50%);
-    padding: 20px;
-    background-color: white;
+
+@keyframes openPop {
+    0%{
+        opacity:0;
+        width:0%;
+        height: 0%;
+    }
+    50%{
+        opacity: 1;
+        width: 80%;
+        height: 0%;
+    }
+    100%{
+        opacity: 1;
+        width: 80%;
+        height: 50px;
+    }
+    
 }
-.popAbout{
-    display: none;
-    top: 50%;
-    left: 50%;
-    transform: translate (-50%, -50%);
-    padding: 20px;
-    background-color: white;
+
+@keyframes closePop {
+    0%{
+        opacity: 1;
+        width: 80%;
+        height: 50px;
+    }
+    50%{
+        opacity: 1;
+        width: 80%;
+        height: 0%;
+    }
+    100%{
+        opacity:0;
+        width:0%;
+        height: 0%;
+    }
+    
 }
+
+
+
+.PopOpen{
+    animation: openPop 1s forwards;
+}
+
+.PopClose{
+    animation: closePop 1s forwards;
+}
+
+.popSeat.active{
+    width: 80%;
+    height: 100px; /* Adjust the max-height to fit your content */
+    opacity: 1;
+}
+.popAbout.active{
+    width: 80%;
+    height: auto; /* Adjust the max-height to fit your content */
+    opacity: 1;
+}
+.popContact.active{
+    width: 80%;
+    height: 100px; /* Adjust the max-height to fit your content */
+    opacity: 1;
+}
+
