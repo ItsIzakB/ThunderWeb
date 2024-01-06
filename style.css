@@ -34,12 +34,22 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
     
 }
+body{
+    background: linear-gradient(to right, #1a1111, 	#021a11);
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
 .container{
     width: 100%;
     height:100vh;
-    background: rgb(34, 34, 34);
     display: flex;
 }
 
@@ -63,10 +73,10 @@ h1{
     font-family: 'Medium';
     font-size: 20px;
     color: white;
+    margin: 10px 0;
     display: flex;
-    list-style: none;
     flex-wrap: wrap;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     cursor: pointer;
     transition: text-shadow 0.5s ease; /* Add transition */
 }
@@ -74,8 +84,37 @@ h1{
     transition: text-shadow 0.5s ease; /* Add transition */
 }
 .navSeat:hover,.navAbout:hover, .navContact:hover{
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),   /* Glowing effect */
-                 0 0 20px rgba(255, 255, 255, 0.8);          
+    animation: glowEffect 3s infinite ease-in-out;
+}
+
+
+@keyframes glowEffect {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        transform: scale(1);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+        transform: scale(1.0);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        transform: scale(1);
+    }
+}
+
+.popSeat{
+    display: flex;
+    justify-content: center;
+    align-items:center; 
+}
+
+.cabAPI{
+    font-family: 'Bold';
+    width:100%;
+    height:60vh;
+    border: solid 3px#343434;
+    border-radius: 5px;
 }
 
 .popUps{
@@ -85,12 +124,12 @@ h1{
     font-family: 'Regular';
     justify-content: center;
     border-radius: 7px;
-    margin: 0px;
-    transition: height 1s ease;
+    margin-bottom: 40px;
+    transition: height 2s ease;
 }
 
 .popUps.active{
-    height: 400px;
+    height: 650px;
 }
 .popSeat,.popContact, .popAbout{
     display:block;
@@ -98,12 +137,59 @@ h1{
     overflow: hidden;
     width:0;
     height: 0;
-    padding: 20px;
+    padding: 40px;
     border-radius: 8px;
-    border: 3px solid rgb(255, 255, 255);
+    border: 3px solid #949494;
     transform: translate (-50%, -50%);
-    background-color: rgb(203, 200, 200);
+    background-color: #343434;
+    color: #dfdddd;
     opacity:0;
+}
+
+/*
+.popSeat - height:67vh;
+.popContact - height:58vh;
+
+*/
+
+
+
+
+
+.contactHead{
+    font-family: 'Medium';
+    font-size: 80px;
+    margin: 25px 0;
+
+}
+
+.contactInfo{
+    font-family: 'Light';
+    font-size: 35px;
+    margin: 100px 0;
+}
+
+ul.custom-bullets li {
+    padding: 8px; /* Adjust padding to your liking */
+    margin-bottom: 8px; /* Adjust spacing between list items */
+    border-radius: 4px; /* Add rounded corners for a card-like appearance */
+}
+
+li::before {
+    content: "\2022"; /* Unicode character for a solid circle bullet point */
+    color: #ffc800; /* Set the color of the bullet point */
+    margin-right: 10px; /* Adjust the spacing between the bullet point and text */
+}
+
+.about-bullets{
+    margin: 20px 0;
+    font-size: 50px;
+}
+.contact-bullets{
+    font-family: 'Light';
+    font-size: 35px;
+    margin: 100px 0; 
+
 }
 
 @keyframes openPop {
@@ -114,13 +200,13 @@ h1{
     }
     50%{
         opacity: 1;
-        width: 80%;
+        width: 50%;
         height: 0%;
     }
     100%{
         opacity: 1;
-        width: 80%;
-        height: 50px;
+        width: 50%;
+        height: 71vh;
     }
     
 }
@@ -128,12 +214,12 @@ h1{
 @keyframes closePop {
     0%{
         opacity: 1;
-        width: 80%;
-        height: 50px;
+        width: 50%;
+        height: 71vh;
     }
     50%{
         opacity: 1;
-        width: 80%;
+        width: 50%;
         height: 0%;
     }
     100%{
@@ -148,25 +234,11 @@ h1{
 
 .PopOpen{
     animation: openPop 1s forwards;
+    animation-delay: 1s;
 }
 
 .PopClose{
     animation: closePop 1s forwards;
 }
 
-.popSeat.active{
-    width: 80%;
-    height: 100px; /* Adjust the max-height to fit your content */
-    opacity: 1;
-}
-.popAbout.active{
-    width: 80%;
-    height: auto; /* Adjust the max-height to fit your content */
-    opacity: 1;
-}
-.popContact.active{
-    width: 80%;
-    height: 100px; /* Adjust the max-height to fit your content */
-    opacity: 1;
-}
 
