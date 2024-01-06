@@ -1,3 +1,4 @@
+
 function activatePopUps(){
     var popUps = document.getElementById("pop");
 
@@ -103,71 +104,6 @@ function checkCloseAbout(){
 } 
 
 
-
-function openPopSeat() {
-
-    var popSeat = document.getElementById("mySeat");
-    var popAbout = document.getElementById("myAbout"); 
-    var popContact = document.getElementById("myContact"); 
-
-
-    /* for transition */
-
-    popSeat.classList.add("animatePopOpen");
-
-    popContact.classList.remove("animatePopOpen");
-    popContact.classList.add("animatePopClose");
-
-    popAbout.classList.remove("animatePopOpen");
-
-    var popUps = document.getElementById("pop");
-
-    popUps.classList.add("active");
-    
-}
-
-function openPopContact() {
-
-
-    var popSeat = document.getElementById("mySeat");
-    var popAbout = document.getElementById("myAbout"); 
-    var popContact = document.getElementById("myContact"); 
-
-    /* for transition */
-
-    popSeat.classList.remove("active");
-
-    popContact.classList.add("animatePopOpen");
-
-    popAbout.classList.remove("active");
-
-
-    var popUps = document.getElementById("pop");
-
-    popUps.classList.add("active");
-
-}
-
-function openPopAbout() {
-
-    var popSeat = document.getElementById("mySeat");
-    var popAbout = document.getElementById("myAbout"); 
-    var popContact = document.getElementById("myContact"); 
-
-    /* for transition */
-
-    popSeat.classList.remove("active");
-
-    popContact.classList.remove("active");
-
-    popAbout.classList.add("animatePopOpen");
-
-
-    var popUps = document.getElementById("pop");
-
-    popUps.classList.add("active");
-
-}
 
 /* We need to check whether other pop ups are open before doing our animation
     We also need to make sure the popClose classlist is not added, because that
