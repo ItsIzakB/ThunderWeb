@@ -11,23 +11,33 @@
       <div class="hero">
         <h1>Thunder Cab</h1>
         <div class="navbar">
-            <h3 id="triggerSeat" class="navSeat">Reserve a Seat</h3>
-            <h3 id="triggerAbout" class="navAbout">About Us</h3>
-            <h3 id="triggerContact" class="navContact">Contact Us<h3>
+          <h3 id="triggerSeat" class="navSeat">Reserve a Taxi</h3>
+          <h3 id="triggerAbout" class="navAbout">About Us</h3>
+          <h3 id="triggerContact" class="navContact">Contact Us</h3>
         </div>
         <div class="popUps" id="pop">
-            <div class="popSeat" id="mySeat">
-                <p>Seat</p>
-            </div>
-            <div class="popAbout" id="myAbout">
-                <p>Eggs are a common food item that many people enjoy. They come from chickens and are a great source of protein. In the morning, you can fry or scramble eggs for breakfast. They can also be used in baking to make delicious cakes or cookies.<br>
-                    Eggs are versatile and can be cooked in various ways, such as boiled or poached. Furthermore, eggs are not only tasty but also nutritious, as they contain vitamins and minerals that are beneficial for our bodies.</p>
-            </div>
-            <div class="popContact" id="myContact">
-                <p>
-                    Contacts <br>
-                    Dispatch: (405) 600-6161</p>
-            </div>
+          <div class="popSeat" id="mySeat">
+            <iframe
+              class="cabAPI"
+              src="https://live2.taxicaller.net/liveview.php?cid=17847&ll=-97.47678731500406,35.45779208749516&z=10"
+            ></iframe>
+          </div>
+          <div class="popAbout" id="myAbout">
+            <ul class="custom-bullets">
+              <li class = "about-bullets">Based in Oklahoma</li>
+              <li class = "about-bullets">15 Years of Experience</li>
+              <li class = "about-bullets">We are the Black Cab with the Yellow Paint</li>
+              <li class = "about-bullets">Happy to Give You Ride!</li>
+            </ul>
+          </div>
+          <div class="popContact" id="myContact">
+            <h2 class="contactHead">Contacts:</h2>
+            <ul class="custom-bullets">
+              <li class = "contact-bullets">Dispatch Number: (405) 600-6161 </h3>
+              <li class = "contact-bullets">Email: sharminokc@gmail.com</h3>  
+            </ul>
+            </p>
+          </div>
         </div>
       </div>
     </div>
