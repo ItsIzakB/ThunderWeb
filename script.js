@@ -129,3 +129,4 @@ document.getElementById("triggerAbout").addEventListener("click", function () {
     checkCloseAbout();
     openPopup("myAbout");
 });
+
