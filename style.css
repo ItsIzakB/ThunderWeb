@@ -30,21 +30,23 @@
     font-family: 'Regular';
     src: url(orkney/Orkney\ Regular.woff2);
 }
+
+/* Adjust font size for smaller screens */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
     
 }
 body{
-    background: linear-gradient(to right, #1a1111, 	#021a11);
+    background: linear-gradient(to right, #00031f, 	#001b11);
     margin: 0;
+    
 }
 
 ul {
     list-style-type: none;
-    padding: 0;
+    padding: min(1vw, 1vh);
 }
 
 .container{
@@ -60,18 +62,24 @@ ul {
 }
 
 h1{
-    margin: 50px;
+    margin-top: 6.25rem;
     font-family: 'Bold Italic';
-    color:rgb(253, 208, 42);
-    font-size: 100px;
+    color:#ffbb01;
+    font-size: 7vw;
     display:flex;
     justify-content: center;
 }
-
-
+.experience{
+    font-family: "Regular Italic";
+    font-size: 1.5vw;
+    color: rgb(179, 178, 178);
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
 .navbar{
     font-family: 'Medium';
-    font-size: 20px;
+    font-size: 2vw;
     color: white;
     margin: 10px 0;
     display: flex;
@@ -107,12 +115,13 @@ h1{
     display: flex;
     justify-content: center;
     align-items:center; 
+    overflow: scroll;
 }
 
 .cabAPI{
     font-family: 'Bold';
     width:100%;
-    height:60vh;
+    height: 100%;
     border: solid 3px#343434;
     border-radius: 5px;
 }
@@ -129,7 +138,7 @@ h1{
 }
 
 .popUps.active{
-    height: 650px;
+    height: 78vh;
 }
 .popSeat,.popContact, .popAbout{
     display:block;
@@ -137,7 +146,7 @@ h1{
     overflow: hidden;
     width:0;
     height: 0;
-    padding: 40px;
+    padding: min(6vw, 6vh);
     border-radius: 8px;
     border: 3px solid #949494;
     transform: translate (-50%, -50%);
@@ -158,37 +167,31 @@ h1{
 
 .contactHead{
     font-family: 'Medium';
-    font-size: 80px;
-    margin: 25px 0;
+    font-size: min(7vw, 7vh);
+    margin:5% 0 7%;
 
 }
 
-.contactInfo{
-    font-family: 'Light';
-    font-size: 35px;
-    margin: 100px 0;
-}
 
 ul.custom-bullets li {
-    padding: 8px; /* Adjust padding to your liking */
-    margin-bottom: 8px; /* Adjust spacing between list items */
+    padding: min(.8vw, 0.8vh); /* Adjust padding to your liking */
+    margin-bottom: min(3.5vw, 3.5vh); /* Adjust spacing between list items */
     border-radius: 4px; /* Add rounded corners for a card-like appearance */
 }
 
 li::before {
     content: "\2022"; /* Unicode character for a solid circle bullet point */
     color: #ffc800; /* Set the color of the bullet point */
-    margin-right: 10px; /* Adjust the spacing between the bullet point and text */
+    margin-right: 1vw; /* Adjust the spacing between the bullet point and text */
 }
 
 .about-bullets{
-    margin: 20px 0;
-    font-size: 50px;
+    font-size: 3.5vw; /*4vw*/
 }
 .contact-bullets{
-    font-family: 'Light';
-    font-size: 35px;
-    margin: 100px 0; 
+    font-family: 'Regular';
+    font-size: min(4vw, 4vh); /*3vw*/
+    margin: 5% 0; 
 
 }
 
@@ -200,26 +203,28 @@ li::before {
     }
     50%{
         opacity: 1;
-        width: 50%;
+        width: 70%;
         height: 0%;
     }
     100%{
         opacity: 1;
-        width: 50%;
-        height: 71vh;
+        width: 70%;
+        height: 70%;
     }
     
 }
-
+/*
+71vh
+*/
 @keyframes closePop {
     0%{
         opacity: 1;
-        width: 50%;
-        height: 71vh;
+        width: 70%;
+        height: 70%;
     }
     50%{
         opacity: 1;
-        width: 50%;
+        width: 70%;
         height: 0%;
     }
     100%{
