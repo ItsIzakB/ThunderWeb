@@ -31,6 +31,8 @@
     src: url(orkney/Orkney\ Regular.woff2);
 }
 
+
+
 /* Adjust font size for smaller screens */
 * {
     margin: 0;
@@ -64,10 +66,11 @@ ul {
 h1{
     margin-top: 6.25rem;
     font-family: 'Bold Italic';
-    color:#ffbb01;
+    color:#ffd119;
     font-size: 7vw;
     display:flex;
     justify-content: center;
+    align-items: center;
 }
 .experience{
     font-family: "Regular Italic";
@@ -77,6 +80,10 @@ h1{
     display: flex;
     justify-content: center;
 }
+
+
+
+
 .navbar{
     font-family: 'Medium';
     font-size: 2vw;
@@ -155,16 +162,6 @@ h1{
     opacity:0;
 }
 
-/*
-.popSeat - height:67vh;
-.popContact - height:58vh;
-
-*/
-
-
-
-
-
 .contactHead{
     font-family: 'Medium';
     font-size: min(7vw, 7vh);
@@ -209,22 +206,59 @@ li::before {
     100%{
         opacity: 1;
         width: 70%;
-        height: 70%;
+        height: min(70vw, 70vh);
     }
     
 }
-/*
-71vh
-*/
+
 @keyframes closePop {
     0%{
         opacity: 1;
         width: 70%;
-        height: 70%;
+        height: min(70vw, 70vh);
     }
     50%{
         opacity: 1;
         width: 70%;
+        height: 0%;
+    }
+    100%{
+        opacity:0;
+        width:0%;
+        height: 0%;
+    }
+    
+}
+
+/*open and close popup for Seat popup for small displays*/
+@keyframes openPopSeatforMobile {
+    0%{
+        opacity:0;
+        width:0%;
+        height: 0%;
+    }
+    50%{
+        opacity: 1;
+        width: 22rem;
+        height: 0%;
+    }
+    100%{
+        opacity: 1;
+        width: 22rem;
+        height: 580px;
+    }
+    
+}
+
+@keyframes closePopSeatforMobile {
+    0%{
+        opacity: 1;
+        width: 22rem;
+        height: 580px;
+    }
+    50%{
+        opacity: 1;
+        width: 22rem;
         height: 0%;
     }
     100%{
@@ -246,4 +280,37 @@ li::before {
     animation: closePop 1s forwards;
 }
 
+.PopOpenSeatforMobile{
+    animation: openPopSeatforMobile 1s forwards;
+    animation-delay: 1s;
+}
+
+.PopCloseSeatforMobile{
+    animation: closePopSeatforMobile 1s forwards;
+}
+
+
+/* Media query for smaller screens */
+@media screen and (max-width: 600px) {
+    .experience {
+       display: none;/* Hide the element on screens with a width of 600px or less */
+    }
+    h1{
+        font-size: 19vw;
+        margin: 6.25rem 0 3rem;
+        text-align: center;
+    }
+    .cabAPI{
+        width: 20rem;
+        height: 750px;
+    }
+
+    .popSeat.mobile{
+        padding: 1rem;
+        margin: 20px;
+    }
+    .navbar{
+        font-size: 3.5vw;
+    }
+}
 
