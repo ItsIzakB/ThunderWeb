@@ -12,6 +12,18 @@ function openPopup(popupId){
     popup.classList.add("PopOpen");
 }
 
+function openPopupSeatforMobile(){
+    var popup = document.getElementById("mySeat");
+    popup.classList.add("PopOpenSeatforMobile");
+
+}
+
+function closePopupSeatforMobile() {
+    var popup = document.getElementById("mySeat");
+    popup.classList.remove("PopOpenSeatforMobile");
+    popup.classList.add("PopCloseSeatforMobile");
+}
+
 function closePopup(popupId) {
     var popup = document.getElementById(popupId);
     popup.classList.remove("PopOpen");
@@ -39,9 +51,13 @@ function checkCloseSeat(){
     var popSeat = document.getElementById("mySeat"); 
 
     var SeatHasPopClose = popSeat.classList.contains("PopClose");
-
+    var SeatHasPopCloseforMobile = popSeat.classList.contains("PopCloseSeatforMobile"); 
     if (SeatHasPopClose){
         popSeat.classList.remove("PopClose");
+    }
+    if(SeatHasPopCloseforMobile){
+        popSeat.classList.remove("PopCloseSeatforMobile");
+
     }
 } 
 
@@ -50,6 +66,7 @@ function checkCloseSeat(){
 
 function checkOpenContact(){
     var popSeat = document.getElementById("mySeat"); 
+    var SeatHasPopOpenforMobile= popSeat.classList.contains("PopOpenSeatforMobile");
     var popAbout = document.getElementById("myAbout"); 
 
     var SeatHasPopOpen= popSeat.classList.contains("PopOpen");
@@ -63,6 +80,11 @@ function checkOpenContact(){
         popSeat.classList.remove("PopOpen");
         popSeat.classList.add("PopClose");
     }
+    else if(SeatHasPopOpenforMobile){
+        popSeat.classList.remove("PopOpenSeatforMobile");
+        popSeat.classList.add("PopCloseSeatforMobile");
+    }
+
 } 
 
 function checkCloseContact(){
@@ -82,6 +104,7 @@ function checkOpenAbout(){
 
     var ContactHasPopOpen = popContact.classList.contains("PopOpen");
     var SeatHasPopOpen= popSeat.classList.contains("PopOpen");
+    var SeatHasPopOpenforMobile= popSeat.classList.contains("PopOpenSeatforMobile");
 
     if (ContactHasPopOpen){
         popContact.classList.remove("PopOpen");
@@ -90,6 +113,10 @@ function checkOpenAbout(){
     else if(SeatHasPopOpen){
         popSeat.classList.remove("PopOpen");
         popSeat.classList.add("PopClose");
+    }
+    else if(SeatHasPopOpenforMobile){
+        popSeat.classList.remove("PopOpenSeatforMobile");
+        popSeat.classList.add("PopCloseSeatforMobile");
     }
 } 
 
@@ -104,7 +131,28 @@ function checkCloseAbout(){
 } 
 
 
+function checkWindowSizeforMobile() {
+    minWidth = 600;
+    if (window.innerWidth <= minWidth) {
+        // Do something when the window width is less than the threshold
+        var popSeat = document.getElementById("mySeat");
+        popSeat.classList.add("mobile");
+        popSeat.classList.add("PopOpenSeatforMobile");
+        popSeat.classList.remove("PopOpen");
+    }
+}
 
+function checkWindowSizeforPC() {
+    minWidth = 600;
+    if (window.innerWidth > minWidth) {
+        // Do something when the window width is less than the threshold
+        var popSeat = document.getElementById("mySeat");
+        popSeat.classList.remove("mobile");
+        popSeat.classList.remove("PopOpenSeatforMobile");
+        popSeat.classList.add("PopOpen");
+    }
+}
+//
 /* We need to check whether other pop ups are open before doing our animation
     We also need to make sure the popClose classlist is not added, because that
     will not allow us to add the popUp classlist after.
@@ -113,7 +161,15 @@ document.getElementById("triggerSeat").addEventListener("click", function () {
     activatePopUps();
     checkOpenSeat();
     checkCloseSeat();
-    openPopup("mySeat");
+
+    //If the width is the mobile width
+    mobileWidth = 600;    
+    if(window.innerWidth < 600){
+        openPopupSeatforMobile();
+    }
+    else{
+        openPopup("mySeat");
+    }
 });
 
 document.getElementById("triggerContact").addEventListener("click", function () {
@@ -129,4 +185,14 @@ document.getElementById("triggerAbout").addEventListener("click", function () {
     checkCloseAbout();
     openPopup("myAbout");
 });
+//Check at beginning to see if width is small
+
+//event listener when resizing window
+var popSeat = document.getElementById("mySeat"); 
+
+var SeatHasPopOpen= popSeat.classList.contains("PopOpen");
+var SeatHasPopOpenforMobile= popSeat.classList.contains("PopOpenSeatforMobile");
+
+    window.addEventListener('resize', checkWindowSizeforMobile);
+    window.addEventListener('resize', checkWindowSizeforPC);
 
