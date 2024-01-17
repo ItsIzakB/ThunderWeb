@@ -1,10 +1,61 @@
 
 function activatePopUps(){
     var popUps = document.getElementById("pop");
+    popUps.classList.remove("activeforMobileSeat");
+    popUps.classList.remove("activeforMobile");
+    popUps.classList.add("active");
+    
+}
 
-    var AboutHasPopOpen = popUps.classList.contains("pop");
-    if(!AboutHasPopOpen){
-        popUps.classList.add("active");
+function activatePopUpsforMobileSeat(){
+    var popUps = document.getElementById("pop");
+    popUps.classList.remove("active");
+    popUps.classList.remove("activeforMobile");
+    popUps.classList.add("activeforMobileSeat");
+
+}
+
+function activatePopUpsforMobile(){
+    var popUps = document.getElementById("pop");
+    popUps.classList.remove("active");
+    popUps.classList.remove("activeforMobileSeat");
+    popUps.classList.add("activeforMobile");
+
+}
+
+function openPopupForSeat(){
+    mobileWidth = 600;    
+    if(window.innerWidth <= 600){
+        openPopupSeatforMobile();
+    }
+    else{
+        openPopup("mySeat");
+    }
+}
+
+function checkWidthtoChangeHeightforSeat(){
+    mobileWidth = 600;    
+    if(window.innerWidth <= 600){
+        activatePopUpsforMobileSeat();
+    }
+    else{
+        activatePopUps();
+    }
+}
+
+function checkWidthtoChangeHeight(){
+    mobileWidth = 600; 
+    var popSeat = document.getElementById("mySeat"); 
+
+    var SeatHasPopOpenforMobile = popSeat.classList.contains("PopOpenSeatforMobile");
+    if(SeatHasPopOpenforMobile && window.innerWidth <= 600){
+        activatePopUpsforMobileSeat(); 
+    }
+    else if(window.innerWidth <= 600){
+        activatePopUpsforMobile();
+    }
+    else{
+        activatePopUps();
     }
 }
 function openPopup(popupId){
@@ -14,6 +65,7 @@ function openPopup(popupId){
 
 function openPopupSeatforMobile(){
     var popup = document.getElementById("mySeat");
+    popup.classList.add("mobile");
     popup.classList.add("PopOpenSeatforMobile");
 
 }
@@ -133,24 +185,35 @@ function checkCloseAbout(){
 
 function checkWindowSizeforMobile() {
     minWidth = 600;
-    if (window.innerWidth <= minWidth) {
-        // Do something when the window width is less than the threshold
-        var popSeat = document.getElementById("mySeat");
-        popSeat.classList.add("mobile");
-        popSeat.classList.add("PopOpenSeatforMobile");
-        popSeat.classList.remove("PopOpen");
+    var popSeat = document.getElementById("mySeat"); 
+    var SeatHasPopOpen= popSeat.classList.contains("PopOpen"); 
+    if(SeatHasPopOpen){
+        if (window.innerWidth <= minWidth) {
+            // Do something when the window width is less than the threshold
+            var popSeat = document.getElementById("mySeat");
+            popSeat.classList.add("mobile");
+            popSeat.classList.add("PopOpenSeatforMobile");
+            popSeat.classList.remove("PopOpen");
+        }
     }
+
 }
 
 function checkWindowSizeforPC() {
     minWidth = 600;
-    if (window.innerWidth > minWidth) {
-        // Do something when the window width is less than the threshold
-        var popSeat = document.getElementById("mySeat");
-        popSeat.classList.remove("mobile");
-        popSeat.classList.remove("PopOpenSeatforMobile");
-        popSeat.classList.add("PopOpen");
+    var popSeat = document.getElementById("mySeat"); 
+    var SeatHasPopOpenforMobile= popSeat.classList.contains("PopOpenSeatforMobile"); 
+
+    if(SeatHasPopOpenforMobile){
+        if (window.innerWidth > minWidth) {
+            // Do something when the window width is less than the threshold
+            var popSeat = document.getElementById("mySeat");
+            popSeat.classList.remove("mobile");
+            popSeat.classList.remove("PopOpenSeatforMobile");
+            popSeat.classList.add("PopOpen");
+        } 
     }
+
 }
 //
 /* We need to check whether other pop ups are open before doing our animation
@@ -158,34 +221,29 @@ function checkWindowSizeforPC() {
     will not allow us to add the popUp classlist after.
     */
 document.getElementById("triggerSeat").addEventListener("click", function () {
-    activatePopUps();
     checkOpenSeat();
     checkCloseSeat();
 
-    //If the width is the mobile width
-    mobileWidth = 600;    
-    if(window.innerWidth < 600){
-        openPopupSeatforMobile();
-    }
-    else{
-        openPopup("mySeat");
-    }
+    openPopupForSeat();
+    checkWidthtoChangeHeight();
 });
 
 document.getElementById("triggerContact").addEventListener("click", function () {
-    activatePopUps();
+
     checkOpenContact();
     checkCloseContact();
+    checkWidthtoChangeHeight();
     openPopup("myContact");
 });
 
 document.getElementById("triggerAbout").addEventListener("click", function () {
-    activatePopUps();
+
     checkOpenAbout();
     checkCloseAbout();
+    checkWidthtoChangeHeight()
     openPopup("myAbout");
 });
-//Check at beginning to see if width is small
+
 
 //event listener when resizing window
 var popSeat = document.getElementById("mySeat"); 
@@ -195,4 +253,6 @@ var SeatHasPopOpenforMobile= popSeat.classList.contains("PopOpenSeatforMobile");
 
     window.addEventListener('resize', checkWindowSizeforMobile);
     window.addEventListener('resize', checkWindowSizeforPC);
+    window.addEventListener('resize', checkWidthtoChangeHeight);
+
 
