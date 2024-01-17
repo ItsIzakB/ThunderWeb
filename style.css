@@ -41,9 +41,8 @@
     
 }
 body{
-    background: linear-gradient(to right, #00031f, 	#001b11);
+    background: linear-gradient(to right, #00031f, 	#002425);
     margin: 0;
-    
 }
 
 ul {
@@ -53,7 +52,7 @@ ul {
 
 .container{
     width: 100%;
-    height:100vh;
+    margin: 20px auto;
     display: flex;
 }
 
@@ -65,18 +64,20 @@ ul {
 
 h1{
     margin-top: 6.25rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
     font-family: 'Bold Italic';
     color:#ffd119;
-    font-size: 7vw;
+    font-size: 6.5rem; /*7vw*/
     display:flex;
     justify-content: center;
     align-items: center;
 }
 .experience{
     font-family: "Regular Italic";
-    font-size: 1.5vw;
+    font-size: 1.25rem;
+    margin-bottom: 4.5rem;
     color: rgb(179, 178, 178);
-    margin-bottom: 50px;
     display: flex;
     justify-content: center;
 }
@@ -86,9 +87,9 @@ h1{
 
 .navbar{
     font-family: 'Medium';
-    font-size: 2vw;
+    font-size: 2vw; /*2vw*/
     color: white;
-    margin: 10px 0;
+    margin: 5px 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -147,6 +148,13 @@ h1{
 .popUps.active{
     height: 78vh;
 }
+
+.popUps.activeforMobileSeat{
+    height: 110vh; 
+}
+.popUps.activeforMobile{
+    height: 53vh;
+}
 .popSeat,.popContact, .popAbout{
     display:block;
     position:absolute;
@@ -179,11 +187,11 @@ ul.custom-bullets li {
 li::before {
     content: "\2022"; /* Unicode character for a solid circle bullet point */
     color: #ffc800; /* Set the color of the bullet point */
-    margin-right: 1vw; /* Adjust the spacing between the bullet point and text */
+    margin-right: min(1vw, 1vh); /* Adjust the spacing between the bullet point and text */
 }
 
 .about-bullets{
-    font-size: 3.5vw; /*4vw*/
+    font-size: min(4.8vw, 4.8vh); /*4vw*/
 }
 .contact-bullets{
     font-family: 'Regular';
@@ -191,7 +199,10 @@ li::before {
     margin: 5% 0; 
 
 }
-
+.popSeat.mobile{
+    padding: 0.5rem;
+    margin: 20px;
+}
 @keyframes openPop {
     0%{
         opacity:0;
@@ -239,13 +250,13 @@ li::before {
     }
     50%{
         opacity: 1;
-        width: 22rem;
+        width: 21.5rem;
         height: 0%;
     }
     100%{
         opacity: 1;
-        width: 22rem;
-        height: 580px;
+        width: 21.5rem;
+        height: 780px;
     }
     
 }
@@ -253,12 +264,12 @@ li::before {
 @keyframes closePopSeatforMobile {
     0%{
         opacity: 1;
-        width: 22rem;
-        height: 580px;
+        width: 21.5rem;
+        height:780px;
     }
     50%{
         opacity: 1;
-        width: 22rem;
+        width: 21.5rem;
         height: 0%;
     }
     100%{
@@ -305,12 +316,22 @@ li::before {
         height: 750px;
     }
 
-    .popSeat.mobile{
-        padding: 1rem;
-        margin: 20px;
-    }
     .navbar{
         font-size: 3.5vw;
     }
 }
-
+/* Media query for even smaller screens */
+@media screen and (max-width: 400px){
+    body{
+        background: #011617;
+    }
+    .container{
+        width: 150%;
+    }
+    h1{
+        font-size: 19vw;
+        margin: 6.25rem 0 3rem;
+        padding: 0 1rem;
+        text-align: center;
+    } 
+}
