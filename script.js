@@ -255,4 +255,3 @@ var SeatHasPopOpenforMobile= popSeat.classList.contains("PopOpenSeatforMobile");
     window.addEventListener('resize', checkWindowSizeforPC);
     window.addEventListener('resize', checkWidthtoChangeHeight);
 
-
